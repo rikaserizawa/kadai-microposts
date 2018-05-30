@@ -26,6 +26,11 @@
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
   
+  <div class="foem-group">
+    <%= f.label :introduction, '自己紹介' %>
+    <%= f.text_field :introduction, class: 'form-control' %>
+  </div>
+  
   <%= f.submit 'Sign up',class: 'btn btn-primary btn-block' %>
   
   <% end %>
