@@ -13,11 +13,15 @@ class MicropostsController < ApplicationController
       render 'toppages/index'
     end
   end
-
+  
   def destroy
     @micropost.destroy
     flash[:success] = "メッセージを削除しました。"
     redirect_back(fallback_location: root_path)
+  end
+  
+  def favorite
+    @favorite = current_user.microposts.build
   end
   
 private

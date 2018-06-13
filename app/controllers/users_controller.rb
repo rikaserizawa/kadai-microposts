@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @micropost = current_user.microposts.build #form_for用
     @microposts = @user.microposts.order('created_at DESC').page(params[:page])
     counts(@user)
   end
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+  #フォロー
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
@@ -38,8 +39,12 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page])
     counts(@user)
   end
-     
-  
+  #お気に入り
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = @user.favorites.page(params[:page])
+    counts(@user)
+  end
 
 private
 
